@@ -1,16 +1,29 @@
 const router = require('express').Router();
+const { TableHints } = require('sequelize/types');
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
+  try {
+    const allTagData = await Tag.findAll();
+    res.json(allTagData);
+  } catch(err) {
+    res.json(err);
+  }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
+  try {
+    const allTagData = await Tag.findByPk(req.params.id);
+    res.json(allTagData);
+  } catch(err) {
+    res.json(err);
+  }
 });
 
 router.post('/', (req, res) => {
