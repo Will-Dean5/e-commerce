@@ -1,4 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
+const Product = require('./Product');
+const Tag = require('./Tag');
+
 
 const sequelize = require('../config/connection');
 
@@ -8,7 +11,7 @@ ProductTag.init(
   {
     // define columns
     id:{
-      type: DataTypes.INTERGER, 
+      type: DataTypes.INTEGER, 
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
